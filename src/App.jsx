@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react"
 
 export default function App(){
-  const [count,setCount] = useState(0);
-  const [start,setStart] = useState(false);
+
+  const[count,setCount] = useState(0);
+  const[start,setStart] = useState(false);
+  
 
   const handle = ()=>{
     setStart(true);
-  }
+  };
 
   useEffect(()=>{
 
     if(!start) return;
-    const time = setInterval(()=>{
+
+    const timer = setInterval(()=>{
       setCount(count=> count+1);
     },1000);
 
-    return () => clearInterval(time);
-  },[start])
+    return ()=> clearInterval(timer);
+  },[start]);
+
   return(
     <>
-    <h1>Day 4</h1>
-    <h1>Count {count}</h1>
-    <br></br>
-    <button onClick={handle}>Increment</button>
+    <h1>Count: {count}</h1>
+    <button onClick={handle}>Click me</button>
     </>
   )
 }
